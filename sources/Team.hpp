@@ -9,16 +9,19 @@
 #include "YountNinja.hpp"
 #include "TrainedNinja.hpp"
 
+using namespace std;
+
 namespace ariel
 {
 
     class Team
     {
     private:
-        std::vector<Character *> members;
+        vector<Character *> members;
+        Character leader;
 
     public:
-        Team(Character *leader)
+        Team(Character *leader) : leader(*leader)
         {
             members.push_back(leader);
         }
@@ -33,27 +36,37 @@ namespace ariel
             int count = 0;
             for (const auto &member : members)
             {
-                // Check if member is still alive
-                // Increment count if alive
+                count += (member->isAlive()) ? 1 : 0;
             }
             return count;
         }
 
         void attack(Team *enemyTeam)
         {
+            if (!enemyTeam->members.empty())
+            {
+                enemyTeam->members.pop_back();
+            }
+            /*Character *target = nullptr;
             for (const auto &member : members)
             {
-                // Perform attack logic for each member
-                // on the enemy team
-                // Use member->attack(enemyCharacter) to attack individual characters
-            }
+                if (!enemyTeam->members.empty())
+                {
+                    target = enemyTeam->members.back();
+                }
+                member->attack(target);
+                if (!target->isAlive())
+                {
+                    enemyTeam->members.pop_back();
+                }
+            }*/
         }
 
         void print() const
         {
             for (const auto &member : members)
             {
-                std::cout << member->print() << std::endl;
+                cout << member->print() << endl;
             }
         }
 
@@ -67,6 +80,6 @@ namespace ariel
         }
     };
 
-} // namespace ariel
+}
 
 #endif

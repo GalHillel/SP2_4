@@ -4,6 +4,8 @@
 #include <cmath>
 #include <string>
 
+using namespace std;
+
 namespace ariel
 {
 
@@ -21,15 +23,17 @@ namespace ariel
         {
             double dx = x - other.x;
             double dy = y - other.y;
-            return std::sqrt(dx * dx + dy * dy);
+            return sqrt(dx * dx + dy * dy);
         }
 
-        std::string toString() const
+        string toString() const
         {
-            return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
+            return "(" + to_string(x) + ", " + to_string(y) + ")";
         }
+
+        Point moveTowards(Point pos, Point dest, int distance) { return pos; }
     };
 
-} // namespace ariel
+}
 
-#endif // POINT_HPP
+#endif

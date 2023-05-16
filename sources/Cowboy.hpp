@@ -8,22 +8,28 @@ namespace ariel
 
     class Cowboy : public Character
     {
+    private:
+        int bullets;
+
     public:
         Cowboy(const std::string &name, const Point &position)
-            : Character(name, position) {}
+            : Character(name, 110, position), bullets(6) {}
+
+        // void attack(Character *target) override { shoot(target); }
 
         void shoot(Character *target)
         {
-            // Implement the shoot logic for the Cowboy character
+            if (isAlive() && hasboolets())
+            {
+                target->hit(10);
+                bullets = bullets - 1;
+            }
         }
+        bool hasboolets() { return (bullets > 0) ? true : false; }
 
-        void attack(Character *target) override
-        {
-            // Implement the attack logic for the Cowboy character
-            shoot(target);
-        }
+        void reload() { bullets = 6; }
     };
 
-} // namespace ariel
+}
 
-#endif // COWBOY_HPP
+#endif

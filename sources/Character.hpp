@@ -1,36 +1,46 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
-#include "Point.hpp" // Assuming Point class is defined here
+#include "Point.hpp"
+
+using namespace std;
 
 namespace ariel
 {
 
     class Character
     {
-    protected:
-        std::string name;
+    private:
+        string name;
         Point position;
+        int hits;
 
     public:
-        Character(const std::string &name, const Point &position)
-            : name(name), position(position) {}
+        Character(const string &name, int hits, const Point &position)
+            : name(name), hits(hits), position(position) {}
 
         virtual ~Character() = default;
 
-        virtual void move(const Point &destination)
-        {
-            position = destination;
-        }
-
         virtual std::string print() const
         {
-            return "Name: " + name + ", Position: " + position.toString();
+            return "Name: " + name + ", Hits: " + to_string(hits) + ", Position: " + position.toString();
         }
 
-        virtual void attack(Character *target) = 0;
+        virtual Point getLocation() const { return position; }
+
+        virtual string getName() const { return name; }
+
+        virtual void hit(int hit) { hits = (hit > 0 && hit <= hits) ? hits - hit : 0; }
+
+        virtual bool isAlive() { return (hits > 0) ? true : false; };
+
+        virtual double distance(Character &other) const { return position.distance(other.position); }
+
+        virtual void setPosition(Point location) { position = location; }
+
+        // virtual void attack(Character *target);
     };
 
-} // namespace ariel
+}
 
-#endif // CHARACTER_HPP
+#endif
