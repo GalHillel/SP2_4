@@ -6,7 +6,7 @@
 #include "Character.hpp"
 #include "Cowboy.hpp"
 #include "OldNinja.hpp"
-#include "YountNinja.hpp"
+#include "YoungNinja.hpp"
 #include "TrainedNinja.hpp"
 
 using namespace std;

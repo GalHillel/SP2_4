@@ -1,5 +1,5 @@
-#ifndef YOUNTNINJA_HPP
-#define YOUNTNINJA_HPP
+#ifndef YOUNGNINJA_HPP
+#define YOUNGNINJA_HPP
 
 #include "Character.hpp"
 
@@ -8,16 +8,16 @@ using namespace std;
 namespace ariel
 {
 
-    class YountNinja : public Character
+    class YoungNinja : public Character
     {
     private:
         int velocity;
 
     public:
-        YountNinja(const string &name, const Point &position)
+        YoungNinja(const string &name, const Point &position)
             : Character(name, 100, position), velocity(14) {}
 
-        // void attack(Character *target) override { slash(target); }
+        void attack(Character *target) { slash(target); }
 
         void slash(Character *target) { target->hit((isAlive() && distance(*target) <= 1) ? 31 : 0); }
 

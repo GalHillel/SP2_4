@@ -16,7 +16,7 @@ namespace ariel
         OldNinja(const std::string &name, const Point &position)
             : Character(name, 150, position), velocity(8) {}
 
-        // void attack(Character *target) override { slash(target); }
+        void attack(Character *target) { slash(target); }
 
         void slash(Character *target) { target->hit((isAlive() && distance(*target) <= 1) ? 31 : 0); }
 

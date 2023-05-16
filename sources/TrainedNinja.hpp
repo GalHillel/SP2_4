@@ -17,7 +17,7 @@ namespace ariel
         TrainedNinja(const string &name, const Point &position)
             : Character(name, 120, position), velocity(12) {}
 
-        // void attack(Character *target) override { slash(target); }
+        void attack(Character *target) { slash(target); }
 
         void slash(Character *target) { target->hit((isAlive() && distance(*target) <= 1) ? 31 : 0); }
 

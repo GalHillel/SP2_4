@@ -15,7 +15,7 @@ namespace ariel
         Cowboy(const std::string &name, const Point &position)
             : Character(name, 110, position), bullets(6) {}
 
-        // void attack(Character *target) override { shoot(target); }
+        void attack(Character *target) { shoot(target); }
 
         void shoot(Character *target)
         {

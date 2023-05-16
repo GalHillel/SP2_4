@@ -77,7 +77,7 @@ namespace ariel
 
     TEST_CASE("YountNinja class")
     {
-        YountNinja ninja("Yount Ninja", Point(0, 0));
+        YoungNinja ninja("Yount Ninja", Point(0, 0));
 
         SUBCASE("Initial properties")
         {

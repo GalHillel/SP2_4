@@ -34,11 +34,11 @@ namespace ariel
 
         virtual bool isAlive() { return (hits > 0) ? true : false; };
 
-        virtual double distance(Character &other) const { return position.distance(other.position); }
+        virtual double distance(Character &other) { return position.distance(other.position); }
 
         virtual void setPosition(Point location) { position = location; }
 
-        // virtual void attack(Character *target);
+        void attack(Character *target);
     };
 
 }
