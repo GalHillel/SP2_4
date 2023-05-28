@@ -1,46 +1,36 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
+#include <string>
 #include "Point.hpp"
-
-using namespace std;
+#include <stdexcept>
+#include <iostream>
 
 namespace ariel
 {
-
     class Character
     {
     private:
-        string name;
-        Point position;
-        int hits;
+        std::string name;
+        std::string type;
+        int hitPoints;
+        Point location;
 
     public:
-        Character(const string &name, int hits, const Point &position)
-            : name(name), hits(hits), position(position) {}
-
+        Character(const std::string &charName, int hp, const Point &loc);
         virtual ~Character() = default;
-
-        virtual std::string print() const
-        {
-            return "Name: " + name + ", Hits: " + to_string(hits) + ", Position: " + position.toString();
-        }
-
-        virtual Point getLocation() const { return position; }
-
-        virtual string getName() const { return name; }
-
-        virtual void hit(int hit) { hits = (hit > 0 && hit <= hits) ? hits - hit : 0; }
-
-        virtual bool isAlive() { return (hits > 0) ? true : false; };
-
-        virtual double distance(Character &other) { return position.distance(other.position); }
-
-        virtual void setPosition(Point location) { position = location; }
-
-        void attack(Character *target);
+        int getHitPoints() const;
+        bool isAlive() const;
+        bool inOtherTeam;
+        double distance(const Character *other) const;
+        void hit(int damage);
+        void setPosition(const Point &loc);
+        void voidPrint() const;
+        Point getLocation() const;
+        std::string getName() const;
+        std::string getType() const;
+        std::string print() const;
     };
-
 }
 
 #endif

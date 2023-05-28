@@ -1,17 +1,11 @@
-#ifndef TEAM2_HPP
-#define TEAM2_HPP
+#ifndef SMARTTEAM_HPP
+#define SMARTTEAM_HPP
 
 #include "Team.hpp"
-#include "TrainedNinja.hpp"
-#include "YoungNinja.hpp"
-#include "OldNinja.hpp"
-#include "Cowboy.hpp"
-#include "Character.hpp"
-#include "Point.hpp"
 
 namespace ariel
 {
-    class Team2 : public Team
+    class SmartTeam : public Team
     {
     public:
         using Team::Team;

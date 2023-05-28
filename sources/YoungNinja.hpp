@@ -1,41 +1,15 @@
 #ifndef YOUNGNINJA_HPP
 #define YOUNGNINJA_HPP
 
-#include "Character.hpp"
-
-using namespace std;
+#include "Ninja.hpp"
 
 namespace ariel
 {
-
-    class YoungNinja : public Character
+    class YoungNinja : public Ninja
     {
-    private:
-        int velocity;
-
     public:
-        YoungNinja(const string &name, const Point &position)
-            : Character(name, 100, position), velocity(14) {}
-
-        void attack(Character *target) { slash(target); }
-
-        void slash(Character *target) { target->hit((isAlive() && distance(*target) <= 1) ? 31 : 0); }
-
-        void move(Character *target)
-        {
-            if (distance(*target) < velocity)
-            {
-                Point newPoint = getLocation();
-                newPoint = newPoint.moveTowards(newPoint, target->getLocation(), velocity);
-                setPosition(newPoint);
-            }
-            else
-            {
-                setPosition(target->getLocation());
-            }
-        }
+        YoungNinja(const std::string &name, const Point &loc);
     };
-
 }
 
 #endif
