@@ -19,8 +19,6 @@ namespace ariel
     public:
         std::vector<Character *> fighters;
         Character *leader;
-
-    public:
         Team(Character *leaderChar);
         void add(Character *fighter);
         virtual void attack(Team *enemy);
